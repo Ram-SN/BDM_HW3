@@ -16,4 +16,4 @@ file = sc.textFile(input_file)
 
 # new_file = file.toDF()
 
-file.take(5).foreach(println)
+file.take(5)
