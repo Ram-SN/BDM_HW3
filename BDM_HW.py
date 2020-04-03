@@ -12,7 +12,7 @@ input_file = sys.argv[1]
 
 sc = SparkContext()
 
-file = sc.textFile(input_file, header=True)
+file = sc.textFile(input_file)
 
 file.createOrReplaceTempView('file')
 
