@@ -1,10 +1,21 @@
 from pyspark import SparkContext
 
 
-bike = sc.textFile('/tmp/bdm/citibike.csv')
-taxi = sc.textFile('/tmp/bdm/yellow.csv.gz')
+input_file = sys.argv[1]
 
-bikeStation = (-74.00263761, 40.73901691)
+output_file = sys.argv[2]
+
+
+
+
+
+
+
+
+
+
+
+
 
 def filterBike(records):
     for record in records:
