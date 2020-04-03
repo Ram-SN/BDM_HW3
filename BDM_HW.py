@@ -12,8 +12,10 @@ input_file = sys.argv[1]
 
 sc = SparkContext()
 
-file = spark.read.csv(input_file)
+file = sc.createDataFrame(input_file)
 
-print(file)
+file = rdd.toDF()
+
+print(file.take(5))
 
 # print("TESTING")
