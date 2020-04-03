@@ -8,7 +8,7 @@ import sys
 
 input_file = sys.argv[1]
 
-output_file = sys.argv[2] ####name of the folder
+#output_file = sys.argv[2] ####name of the folder
 
 file = spark.read.csv(input_file, header=True)
 
