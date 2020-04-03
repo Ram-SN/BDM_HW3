@@ -16,6 +16,6 @@ file = sc.textFile(input_file)
 
 # new_file = file.toDF()
 
-#file.take(5)
+print(file.take(5))
 
 print("TESTING")
