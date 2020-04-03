@@ -14,6 +14,6 @@ sc = SparkContext()
 
 file = sc.textFile(input_file)
 
-file = file.toDF()
+new_file = file.toDF()
 
-file.show(5)
+new_file.show(5)
