@@ -14,4 +14,4 @@ sc = SparkContext()
 
 file = sc.textFile(input_file)
 
-file.head()
+file.show(5)
