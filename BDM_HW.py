@@ -10,7 +10,9 @@ input_file = sys.argv[1]
 
 #output_file = sys.argv[2] ####name of the folder
 
-file = spark.read.csv(input_file, header=True)
+sc = SparkContext()
+
+file = sc.textFile(input_file, header=True)
 
 file.createOrReplaceTempView('file')
 
