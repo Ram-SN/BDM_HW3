@@ -14,6 +14,4 @@ sc = SparkContext()
 
 file = sc.textFile(input_file)
 
-file.createOrReplaceTempView('file')
-
 file.head()
