@@ -8,14 +8,14 @@ import sys
 
 input_file = sys.argv[1]
 
-#output_file = sys.argv[2] ####name of the folder
+# output_file = sys.argv[2] ####name of the folder
 
 sc = SparkContext()
 
 file = sc.textFile(input_file)
 
-# new_file = file.toDF()
+file = rdd.toDF()
 
 print(file.take(5))
 
-print("TESTING")
+# print("TESTING")
