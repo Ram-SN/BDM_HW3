@@ -25,8 +25,8 @@ df1 = df.withColumnRenamed('Date received', 'Date_received')
 
 df1.createOrReplaceTempView('df1')
  
-df1.show()
+#df1.show()
 
-#test = spark.sql('SELECT Date_received, Product FROM df1')
+test = spark.sql('SELECT EXTRACT(YEAR FROM Date_received), Product FROM df1')
 
-#test.show()
+test.show()
