@@ -7,6 +7,8 @@ import sys
 import pyspark
 from pyspark import SparkContext
 from pyspark.sql.session import SparkSession
+from pyspark.sql.functions import col
+
 
 
 input_file = sys.argv[1]
