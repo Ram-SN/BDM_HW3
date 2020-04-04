@@ -18,7 +18,7 @@ df = spark.read.csv(input_file, header=True)
 
 df.createOrReplaceTempView('df')
 
-df.columns()
+df.printSchema()
 
 #test = spark.sql('SELECT ,Product FROM df')
 
