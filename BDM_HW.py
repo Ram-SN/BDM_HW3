@@ -21,7 +21,10 @@ df.createOrReplaceTempView('df')
 
 #df.printSchema()
 
-df1=df.withColumnRenamed('Date received', 'Date_received')
+df1 = df.withColumnRenamed('Date received', 'Date_received')
+
+df1.createOrReplaceTempView('df1')
+
  
 #df1.show()
 
