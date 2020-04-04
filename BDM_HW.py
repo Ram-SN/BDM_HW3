@@ -21,7 +21,7 @@ if __name__=='__main__':
 
     output = file.mapPartitions(sample_print)
 
-    print(output)
+    print(output.collect())
 
 
 
