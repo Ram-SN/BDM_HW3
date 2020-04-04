@@ -9,6 +9,6 @@ input_file = sys.argv[1]
 
 sc = SparkContext()
 
-file = sc.textFile(input_file)
+file = spark.read.csv(input_file)
 
 file.head()
