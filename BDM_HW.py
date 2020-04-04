@@ -5,25 +5,13 @@
 from pyspark import SparkContext
 import sys
 
+input_file = sys.argv[1]
 
-def sample_print(records):
-    for record in records:
-        fields = record.split(',')
-        print (fields[3],1)
+sc = SparkContext()
 
-if __name__=='__main__':
+file = sc.textFile(input_file)
 
-    input_file = sys.argv[1]
-
-    sc = SparkContext()
-
-    file = sc.textFile(input_file)
-
-    file.mapPartitions(sample_print)
-
-    # print(output.collect())
-
-
+print(file)
 
 
 # print("TESTING")
