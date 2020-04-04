@@ -19,10 +19,12 @@ df.createOrReplaceTempView('df')
 
 #df.show()
 
-#df.printSchema()
+
 
 df = df.withColumnRenamed("Date received", "Date_received")
 
-test = spark.sql('SELECT Product, Date_received FROM df')
+df.printSchema()
 
-test.show()
+# test = spark.sql('SELECT Product, Date_received FROM df')
+
+# test.show()
