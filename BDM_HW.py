@@ -25,7 +25,6 @@ df1 = df.withColumnRenamed('Date received', 'Date_received')
 
 df1.createOrReplaceTempView('df1')
 
-filterCol(df1)
 
 
 
@@ -33,6 +32,10 @@ def filterCol(records):
 	for record in records:
 		fields = record.split(',')
 		print(field[1], fields[2])
+
+
+filterCol(df1)
+
 
 
  
