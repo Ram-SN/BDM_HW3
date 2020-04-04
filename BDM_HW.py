@@ -2,13 +2,24 @@
 # -*- coding: utf-8 -*-
 
 
-from pyspark import SparkContext
+
 import sys
+import pyspark
+from pyspark import SparkContext
+from pyspark.sql.session import SparkSession
+
 
 input_file = sys.argv[1]
 
-sc = SparkContext()
+sc = SparkContext.getOrCreate()
+spark = SparkSession(sc)
 
-file = spark.read.csv(input_file)
+df = spark.read.csv(input_file)
+df.show()
 
-file.head()
+
+# sc = SparkContext()
+
+# file = spark.read.csv(input_file)
+
+# file.head()
