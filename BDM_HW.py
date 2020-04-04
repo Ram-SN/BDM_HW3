@@ -21,10 +21,10 @@ df.createOrReplaceTempView('df')
 
 #df.printSchema()
 
-df2 = df.selectExpr("Date received as Date_r")
-df2.show()
+df1=df.withColumnRenamed('Date received', 'Date_received')
+ 
+#df1.show()
 
+test = spark.sql('SELECT Product, Date_received FROM df1')
 
-# test = spark.sql('SELECT Product, Date received FROM df')
-
-# test.show()
+test.show()
