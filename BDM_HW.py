@@ -11,7 +11,7 @@ sc = SparkContext()
 
 file = sc.textFile(input_file)
 
-print(file)
+file.take(5)
 
 
 # print("TESTING")
