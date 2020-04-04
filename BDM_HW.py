@@ -18,9 +18,11 @@ df = spark.read.csv(input_file, header=True)
 
 df.createOrReplaceTempView('df')
 
-test = spark.sql('SELECT "Date received",Product FROM df')
+df.columns()
 
-test.show()
+#test = spark.sql('SELECT ,Product FROM df')
+
+#test.show()
 
 
 # sc = SparkContext()
