@@ -9,7 +9,7 @@ import sys
 def sample_print(records):
     for record in records:
         fields = record.split(',')
-        yield (fields)
+        print (fields)
 
 if __name__=='__main__':
 
@@ -19,9 +19,9 @@ if __name__=='__main__':
 
     file = sc.textFile(input_file)
 
-    output = file.mapPartitions(sample_print)
+    file.mapPartitions(sample_print)
 
-    print(output.collect())
+    # print(output.collect())
 
 
 
