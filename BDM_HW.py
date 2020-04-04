@@ -6,16 +6,24 @@ from pyspark import SparkContext
 import sys
 
 
-input_file = sys.argv[1]
+def sample_print(records):
+    for record in records:
+        fields = record.split(',')
+            yield (fields)
 
-# output_file = sys.argv[2] ####name of the folder
+if __name__=='__main__':
 
-sc = SparkContext()
+    input_file = sys.argv[1]
 
-file = sc.createDataFrame(input_file)
+    sc = SparkContext()
 
-file = rdd.toDF()
+    file = sc.textFile(input_file)
 
-print(file.take(5))
+    output = file.mapPartitions(sample_print)
+
+    print(output)
+
+
+
 
 # print("TESTING")
