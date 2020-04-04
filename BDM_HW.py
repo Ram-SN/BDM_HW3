@@ -8,33 +8,37 @@ import pyspark
 from pyspark import SparkContext
 from pyspark.sql.session import SparkSession
 
-input_file = sys.argv[1]
-
-sc = SparkContext.getOrCreate()
-spark = SparkSession(sc)
-
-df = spark.read.csv(input_file, header=True)
-
-df.createOrReplaceTempView('df')
-
-#df.show()
-
-#df.printSchema()
-
-df1 = df.withColumnRenamed('Date received', 'Date_received')
-
-df1.createOrReplaceTempView('df1')
-
-
-
 
 def filterCol(records):
 	for record in records:
-		fields = record.split(',')
-		print(field[1], fields[2])
+        fields = record.split(',')
+        yield(fields[1])
 
 
-filterCol(df1)
+
+
+
+
+
+
+if __name__=='__main__':
+
+	input_file = sys.argv[1]
+
+	sc = SparkContext.getOrCreate()
+
+	spark = SparkSession(sc)
+
+	df = spark.read.csv(input_file, header=True)
+
+	df.createOrReplaceTempView('df')
+
+	df1 = df.withColumnRenamed('Date received', 'Date_received')
+
+	df1.createOrReplaceTempView('df1')
+
+	func = df1.mapPartions(filterCol)
+
 
 
 
