@@ -18,7 +18,7 @@ df = spark.read.csv(input_file, header=True)
 
 df.createOrReplaceTempView('df')
 
-test = spark.sql('SELECT Product, df.Date received FROM df')
+test = spark.sql('SELECT "Date received",Product FROM df')
 
 test.show()
 
