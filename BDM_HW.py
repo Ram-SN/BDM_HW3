@@ -28,6 +28,6 @@ df1.createOrReplaceTempView('df1')
  
 #df1.show()
 
-test = spark.sql('SELECT Product, Date_received FROM df1')
+test = spark.sql('SELECT * FROM df1')
 
 test.show()
