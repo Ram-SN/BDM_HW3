@@ -14,7 +14,7 @@ input_file = sys.argv[1]
 sc = SparkContext.getOrCreate()
 spark = SparkSession(sc)
 
-df = spark.read.csv(input_file)
+df = spark.read.csv(input_file, header=True)
 df.show()
 
 
