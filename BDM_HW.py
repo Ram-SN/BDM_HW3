@@ -20,7 +20,7 @@ df.createOrReplaceTempView('df')
 
 test = spark.sql('SELECT "Product", "Date Received" FROM df')
 
-df.show()
+test.show()
 
 
 # sc = SparkContext()
