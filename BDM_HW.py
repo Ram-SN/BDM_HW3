@@ -9,7 +9,7 @@ import sys
 def sample_print(records):
     for record in records:
         fields = record.split(',')
-        print (fields)
+        print (fields[3],1)
 
 if __name__=='__main__':
 
