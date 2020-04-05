@@ -21,7 +21,7 @@ res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
 res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alias('Count_comp')).sort('year','Product')
 
-res3 = res2.groupBy('year', 'Product').agg(func.count('Count_comp').alias('Count_comp_more')).filter(res2.Count_comp >= 1).sort('year','Product').select('Product','year','Count_comp','Count_comp_more')
+res3 = res2.groupBy('year', 'Product').agg(func.count('Count_comp').alias('Count_comp_more')).filter(res2.Count_comp >= 1).sort('year','Product')
 
 res3.show()
 
