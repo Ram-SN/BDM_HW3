@@ -25,7 +25,9 @@ res3 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_su
 
 res4 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
 
-res5 = res3.join(res4, res3.year == res4.year, res3.Product == res4.Product, how="inner")
+cond = [res3.year == res4.year, res3.Product == res4.Product]
+
+res5 = res3.join(res4, cond, 'inner')
 
 res5.show()
 #test.show()
