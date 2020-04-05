@@ -17,8 +17,6 @@ df.createOrReplaceTempView('df')
 
 test = df.select('Date received', 'Product', 'Company')
 
-res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
-
-print(res1)
+res1 = test.select(year('Date received').alias('year'), 'Product', 'Company').show()
 
 #test.show()
