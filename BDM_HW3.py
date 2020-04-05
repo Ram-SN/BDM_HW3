@@ -33,16 +33,17 @@ res4 = res4.withColumn("Product",func.lower(func.col("Product")))
 
 res4 = res4.filter(res4.Count_comp >= 1)
 
-res4.show()
+# res4.show()
 
-# res3 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
+res5 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
 
-# res4 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
+res6 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
 
-# cond = [res3.year == res4.year, res3.Product == res4.Product]
+#cond = [res3.year == res4.year, res3.Product == res4.Product]
 
-# res5 = res3.join(res4, cond, 'inner')
+res7 = res5.join(res6, ['year','Product'], 'left')
 
+res7.show()
 # res5 = res5.select(Product, year,)
 
 # res2.show()
