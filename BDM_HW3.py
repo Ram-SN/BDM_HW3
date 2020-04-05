@@ -17,5 +17,9 @@ df.createOrReplaceTempView('df')
 
 test = df.select('Date received', 'Product', 'Company')
 
-test.select(year('Date received'), 'Product', 'Company').show()
+res1 = test.select(year('Date received').alias('year'), 'Product', 'Company').show()
+
+res2 = spark.sql('SELECT COUNT(Company) FROM res1 GROUP BY year')
+
+
 #test.show()
