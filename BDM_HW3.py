@@ -21,4 +21,6 @@ res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
 res2 = res1.select('year', 'Product', 'Company').groupBy('Company', 'year').agg(func.count('Company'))
 
+res2.show()
+
 #test.show()
