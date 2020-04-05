@@ -9,7 +9,7 @@ spark = SparkSession(sc)
 
 input_file = sys.argv[1]
 
-df = spark.read.csv(input_file, header=True, escape ='"', inferSchema = True, multiline = True)
+df = spark.read.csv(input_file, header=True, escape ='"', inferSchema = True, multiLine = True)
 
 df.createOrReplaceTempView('df')
 
