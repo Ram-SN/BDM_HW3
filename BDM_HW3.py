@@ -19,15 +19,17 @@ test = df.select('Date received', 'Product', 'Company')
 
 res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
-res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alias('Count_comp'))
+res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count().alias('Count_comp'))
 
-res3 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
+# res3 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
 
-res4 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
+# res4 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
 
-cond = [res3.year == res4.year, res3.Product == res4.Product]
+# cond = [res3.year == res4.year, res3.Product == res4.Product]
 
-res5 = res3.join(res4, cond, 'inner')
+# res5 = res3.join(res4, cond, 'inner')
 
-res5.show()
+# res5 = res5.select(Product, year,)
+
+res2.show()
 #test.show()
