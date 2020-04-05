@@ -15,4 +15,8 @@ df.createOrReplaceTempView('df')
 
 test = df.select('Date received', 'Product')
 
-test.show()
+test = test.select('')
+
+test.printSchema()
+
+#test.show()
