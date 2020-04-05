@@ -23,5 +23,6 @@ res1.createOrReplaceTempView('res1')
 
 res2 = spark.sql('SELECT COUNT(Company) FROM res1 GROUP BY year')
 
+print(res2)
 
 #test.show()
