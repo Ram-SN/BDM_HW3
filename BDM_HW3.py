@@ -19,8 +19,8 @@ test = df.select('Date received', 'Product', 'Company')
 
 res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
-res2 = res1.select('year', 'Product', 'Company').count()
+res2 = res1.select('year', 'Product', 'Company').agg(func.count('Product'))
 
-print (res2)
+res2.show()
 
 #test.show()
