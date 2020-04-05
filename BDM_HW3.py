@@ -23,7 +23,7 @@ res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alia
 
 #res3 = res2.groupBy('year','Product')
 
-res4 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'),agg(func.max('Count_comp').alias('Count_max'))
+res4 = res2.groupBy('year','Product').agg(func.sum(res2.Count_comp).alias('Count_sum'),agg(func.max(res2.Count_comp).alias('Count_max'))
 
 res4.show()
 
