@@ -25,7 +25,7 @@ res3 = res2.filter(res2.Count_comp >= 1).groupBy('year', 'Product').agg(func.cou
 
 cond = [res2.year == res3.year, res2.Product == res3.Product]
 
-res4 = res2.join(res3, cond, 'left')
+res4 = res2.join(res3, ('year','Product'), 'left')
 
 res4.show()
 
@@ -39,5 +39,5 @@ res4.show()
 
 # res5 = res5.select(Product, year,)
 
-res2.show()
-#test.show()
+# res2.show()
+# test.show()
