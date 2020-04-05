@@ -43,6 +43,8 @@ res6 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_ma
 
 res7 = res5.join(res6, ['year','Product'], 'left')
 
+res7 = res7.filter(res7.Count_sum >=1)
+
 res7.show()
 # res5 = res5.select(Product, year,)
 
