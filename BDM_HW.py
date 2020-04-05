@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
-
 import sys
 import pyspark
 from pyspark import SparkContext
@@ -25,7 +23,7 @@ df1 = df.withColumnRenamed('Date received', 'Date_received')
 
 df1.createOrReplaceTempView('df1')
 
-df1.printSchema()
+df1.head()
 
 # test = spark.sql('SELECT EXTRACT(YEAR FROM Date_received), Product FROM df1')
 
