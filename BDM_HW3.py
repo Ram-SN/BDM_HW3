@@ -29,6 +29,8 @@ res4 = res2.join(res3, ['year','Product'], 'left')
 
 res4 = res4.sort('year','Product')
 
+res4 = res4.withColumn("Product",func.lower(func.col("Product")))
+
 res4.show()
 
 # res3 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
