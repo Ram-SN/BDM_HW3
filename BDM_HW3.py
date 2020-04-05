@@ -23,9 +23,11 @@ res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alia
 
 res3 = res2.filter(res2.Count_comp >= 1).groupBy('year', 'Product').agg(func.count('Count_comp').alias('Count_comp_more')).sort('year','Product')
 
-cond = [res2.year == res3.year, res2.Product == res3.Product]
+#cond = [res2.year == res3.year, res2.Product == res3.Product]
 
 res4 = res2.join(res3, ['year','Product'], 'left')
+
+res4 = res4.sort('year','Product')
 
 res4.show()
 
