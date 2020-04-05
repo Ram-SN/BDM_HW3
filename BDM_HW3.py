@@ -19,7 +19,7 @@ test = df.select('Date received', 'Product', 'Company')
 
 res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
-res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count().alias('Count_comp'))
+res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alias('Count_comp')).sort('year','Product')
 
 # res3 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
 
