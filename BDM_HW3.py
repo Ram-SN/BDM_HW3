@@ -13,6 +13,6 @@ df = spark.read.csv(input_file, header=True, escape ='"', inferSchema = True, mu
 
 df.createOrReplaceTempView('df')
 
-test = spark.sql('SELECT EXTRACT(YEAR FROM Date received), Product FROM df')
+test = df.select('Date received', 'Product')
 
 test.show()
