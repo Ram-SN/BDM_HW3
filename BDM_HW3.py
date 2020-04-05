@@ -15,7 +15,7 @@ df = spark.read.csv(input_file, header=True, escape ='"', inferSchema = True, mu
 
 df.createOrReplaceTempView('df')
 
-test = df.select('Date received', 'Product')
+test = df.select('Date received', 'Product', 'Company')
 
-test.select(year('Date received')).show()
+test.select(year('Date received'), 'Product', 'Company').show()
 #test.show()
