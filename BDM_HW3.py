@@ -15,6 +15,5 @@ df.createOrReplaceTempView('df')
 
 test = df.select('Date received', 'Product')
 
-test.printSchema()
-
+test.select(year('Date received')).show()
 #test.show()
