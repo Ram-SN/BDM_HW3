@@ -21,6 +21,6 @@ res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
 res2 = res1.select('year', 'Product', 'Company').count()
 
-return res2
+print res2
 
 #test.show()
