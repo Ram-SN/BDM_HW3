@@ -55,6 +55,6 @@ res7 = res7.drop(res7.Count_max)
 
 #res7.show()
 
-res8 = res7.join(res4,['year','Product'],'inner').sort('year','Product')
+res8 = res7.join(res4,['year','Product'],'inner').sort('Product','year')
 
 res8.show()
