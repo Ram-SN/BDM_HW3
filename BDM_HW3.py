@@ -27,8 +27,10 @@ res3 = res2.groupBy('year', 'Product').agg(func.sum('Count_comp').alias('Total_C
 
 res3 = res3.filter(res3.Total_Complaints>= 1)
 #res3 = res3.withColumn('Percentage',  func.round(func.col("Count_max") / func.col("Count_sum") * 100))
+res4 = res3.withColumn('Percentage', func.round(func.col('maximum') / func.col('Total_Complaints') * 100))
 
-res3.show()
+res4 = res4.drop(res4.maximum)
+res4.show()
 # cond = [res2.year == res3.year, res2.Product == res3.Product]
 
 # res4 = res2.join(res3, ['year','Product'], 'inner')
