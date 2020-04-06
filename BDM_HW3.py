@@ -51,8 +51,8 @@ res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col
 
 res7 = res7.withColumn("Product",func.lower(func.col("Product")))
 
-res7.show()
+#res7.show()
 
-#res8 = res7.join(res4,['year','Product'],'inner')
+res8 = res7.join(res4,['year','Product'],'inner')
 
-#res8.show()
+res8.show()
