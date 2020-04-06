@@ -35,7 +35,7 @@ res4 = res4.drop(res4.Company)
 
 res4 = res4.filter(res4.Count_comp >= 1)
 
-# res4.show()
+res4.show()
 
 res5 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
 
@@ -51,6 +51,6 @@ res7 = res7.withColumn("Product",func.lower(func.col("Product")))
 
 # res7.show()
 
-res8 = res7.join(res4,['year','Product'],'inner').groupBy('year', 'Product')
+#res8 = res7.join(res4,['year','Product'],'inner')
 
-res8.show()
+#res8.show()
