@@ -49,7 +49,7 @@ res7 = res7.filter(res7.Count_sum >=1)
 
 res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col("Count_sum") * 100))
 
-res8 = res4.join(res7,['year','Product'],'left')
+res8 = res7.join(res4,['year','Product'],'left')
 
 res8.show()
  
