@@ -37,13 +37,13 @@ res4 = res4.filter(res4.Count_comp >= 1)
 
 res4 = res4.drop(res4.Count_comp)
 
-res4 = res4.drop(res4.Count_max)
-
 #res4.show()
 
 res5 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
 
 res6 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
+
+res6 = res6.drop(res6.Count_max)
 
 res7 = res5.join(res6, ['year','Product'], 'inner')
 
