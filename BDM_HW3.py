@@ -53,4 +53,6 @@ res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col
 
 res8 = res7.join(res4,['year','Product'],'left')
 
+res8.show()
+
 # res8.show()
