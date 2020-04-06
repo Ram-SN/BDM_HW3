@@ -19,9 +19,11 @@ test = df.select('Date received', 'Product', 'Company')
 
 res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
+res1 = res1.orderBy('Product','year')
+
 res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alias('Count_comp'))
 
-res3 = res2.groupBy('year', 'Product').agg(func.sum('count('Count_comp')').alias('Total Complaints'), func.countDistinct('Company').alias('Total Companies'), func.max('count(Count_comp)').alias('maximum'))
+res3 = res2.groupBy('year', 'Product').agg(func.sum('count(Count_comp)').alias('Total Complaints'), func.countDistinct('Company').alias('Total Companies'), func.max('count(Count_comp)').alias('maximum'))
 
 #res3 = res3.withColumn('Percentage',  func.round(func.col("Count_max") / func.col("Count_sum") * 100))
 
