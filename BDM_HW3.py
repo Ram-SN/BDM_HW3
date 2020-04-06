@@ -31,6 +31,8 @@ res4 = res4.sort('year','Product')
 
 res4 = res4.withColumn("Product",func.lower(func.col("Product")))
 
+res4 = res4.drop(res4.Company)
+
 res4 = res4.filter(res4.Count_comp >= 1)
 
 # res4.show()
