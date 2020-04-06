@@ -19,9 +19,9 @@ test = df.select('Date received', 'Product', 'Company')
 
 res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
-res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alias('Count_comp')).sort('year','Product')
+res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alias('Count_comp'))
 
-res3 = res2.filter(res2.Count_comp >= 1).groupBy('year', 'Product').agg(func.count('Count_comp').alias('Count_comp_more')).sort('year','Product')
+res3 = res2.filter(res2.Count_comp >= 1).groupBy('year', 'Product').agg(func.count('Count_comp').alias('Count_comp_more'))
 
 #cond = [res2.year == res3.year, res2.Product == res3.Product]
 
@@ -51,12 +51,6 @@ res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col
 
 # res7.show()
 
+res8 = res7.join(res4,['year','Product'],'left')
 
-res8 = res7.join(res4,['year','Product'],'inner')
-
-res8.show()
- 
-# res5 = res5.select(Product, year,)
-
-# res2.show()
-# test.show()
+# res8.show()
