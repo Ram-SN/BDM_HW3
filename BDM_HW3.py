@@ -21,40 +21,43 @@ res1 = test.select(year('Date received').alias('year'), 'Product', 'Company')
 
 res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alias('Count_comp'))
 
-res3 = res2.filter(res2.Count_comp >= 1).groupBy('year', 'Product').agg(func.count('Count_comp').alias('Count_comp_more'))
+res3 = res2.groupBy('year', 'Product').agg(func.count('Count_comp').alias('Total Complaints'), func.countDistinct('Company').alias('Total Companies'), func.max('count(Count_comp)').alias('maximum'))
 
-#cond = [res2.year == res3.year, res2.Product == res3.Product]
+res3 = res3.withColumn('Percentage',  func.round(func.col("Count_max") / func.col("Count_sum") * 100))
 
-res4 = res2.join(res3, ['year','Product'], 'inner')
+res3.show()
+# cond = [res2.year == res3.year, res2.Product == res3.Product]
 
-res4 = res4.sort('year','Product')
+# res4 = res2.join(res3, ['year','Product'], 'inner')
 
-res4 = res4.withColumn("Product",func.lower(func.col("Product")))
+# res4 = res4.sort('year','Product')
 
-res4 = res4.drop(res4.Company)
+# res4 = res4.withColumn("Product",func.lower(func.col("Product")))
 
-res4 = res4.filter(res4.Count_comp >= 1)
+# res4 = res4.drop(res4.Company)
 
-res4 = res4.drop(res4.Count_comp)
+# res4 = res4.filter(res4.Count_comp >= 1)
 
-#res4.show()
+# res4 = res4.drop(res4.Count_comp)
 
-res5 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
+# #res4.show()
 
-res6 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
+# res5 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
 
-res7 = res5.join(res6, ['year','Product'], 'inner')
+# res6 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
 
-res7 = res7.filter(res7.Count_sum >=1)
+# res7 = res5.join(res6, ['year','Product'], 'inner')
 
-res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col("Count_sum") * 100))
+# res7 = res7.filter(res7.Count_sum >=1)
 
-res7 = res7.withColumn("Product",func.lower(func.col("Product")))
+# res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col("Count_sum") * 100))
 
-res7 = res7.drop(res7.Count_max)
+# res7 = res7.withColumn("Product",func.lower(func.col("Product")))
 
-#res7.show()
+# res7 = res7.drop(res7.Count_max)
 
-res8 = res7.join(res4,['year','Product'],'inner').sort('Product','year')
+# #res7.show()
 
-res8.show()
+# res8 = res7.join(res4,['year','Product'],'inner').sort('Product','year')
+
+# res8.show()
