@@ -53,4 +53,4 @@ res7 = res7.withColumn("Product",func.lower(func.col("Product")))
 
 res8 = res7.join(res4,['year','Product'],'left').groupBy('year', 'Product')
 
-res8.show()
+res8.collect()
