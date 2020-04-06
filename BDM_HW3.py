@@ -41,20 +41,16 @@ res5 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_su
 
 res6 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
 
-#cond = [res3.year == res4.year, res3.Product == res4.Product]
-
 res7 = res5.join(res6, ['year','Product'], 'left')
 
 res7 = res7.filter(res7.Count_sum >=1)
 
 res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col("Count_sum") * 100))
 
+res7 = res7.withColumn("Product",func.lower(func.col("Product")))
+
 # res7.show()
 
-cond = (res7.year == res4.year) & (res7.Product == res4.Product)
-
-res8 = res7.join(res4, cond,'left')
+res8 = res7.join(res4,['year','Product'],'left')
 
 res8.show()
-
-# res8.show()
