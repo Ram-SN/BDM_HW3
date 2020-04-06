@@ -25,6 +25,7 @@ res2 = res1.groupBy('year', 'Product', 'Company').agg(func.count('Product').alia
 
 res3 = res2.groupBy('year', 'Product').agg(func.sum('Count_comp').alias('Total Complaints'), func.countDistinct('Company').alias('Total Companies'), func.max('Count_comp').alias('maximum'))
 
+res3 = res3.filter(res3.Total Complaints >= 1)
 #res3 = res3.withColumn('Percentage',  func.round(func.col("Count_max") / func.col("Count_sum") * 100))
 
 res3.show()
