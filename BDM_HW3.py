@@ -32,7 +32,7 @@ res3 = res3.filter(res3.Total_Complaints>= 1)
 
 res4 = res3.withColumn('Percentage', func.round(func.col('maximum') / func.col('Total_Complaints') * 100))
 
-res4 = res4.drop(res4.maximum).sort('year', 'Product')
+res4 = res4.drop(res4.maximum).sort('Product', 'year')
 
 res4 = res4.withColumn("Product",func.lower(func.col("Product")))
 
