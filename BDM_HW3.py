@@ -7,9 +7,12 @@ from pyspark.sql.functions import year, month, dayofmonth
 from pyspark.sql.session import SparkSession
 
 sc = SparkContext()
+
 spark = SparkSession(sc)
 
 input_file = sys.argv[1]
+
+output_file = sys.argv[2]
 
 df = spark.read.csv(input_file, header=True, escape ='"', inferSchema = True, multiLine = True)
 
@@ -30,42 +33,8 @@ res3 = res3.filter(res3.Total_Complaints>= 1)
 res4 = res3.withColumn('Percentage', func.round(func.col('maximum') / func.col('Total_Complaints') * 100))
 
 res4 = res4.drop(res4.maximum).sort('year', 'Product')
+
+res4 = res4.select(func.lower('Product'), 'year', 'Total_Complaints', 'Total_Companies', 'Percentage')
+
 res4.show()
 
-
-#res3 = res3.withColumn('Percentage',  func.round(func.col("Count_max") / func.col("Count_sum") * 100))
-# cond = [res2.year == res3.year, res2.Product == res3.Product]
-
-# res4 = res2.join(res3, ['year','Product'], 'inner')
-
-# res4 = res4.sort('year','Product')
-
-# res4 = res4.withColumn("Product",func.lower(func.col("Product")))
-
-# res4 = res4.drop(res4.Company)
-
-# res4 = res4.filter(res4.Count_comp >= 1)
-
-# res4 = res4.drop(res4.Count_comp)
-
-# #res4.show()
-
-# res5 = res2.groupBy('year','Product').agg(func.sum('Count_comp').alias('Count_sum'))
-
-# res6 = res2.groupBy('year','Product').agg(func.max('Count_comp').alias('Count_max'))
-
-# res7 = res5.join(res6, ['year','Product'], 'inner')
-
-# res7 = res7.filter(res7.Count_sum >=1)
-
-# res7 = res7.withColumn('percentage', func.round(func.col("Count_max") / func.col("Count_sum") * 100))
-
-# res7 = res7.withColumn("Product",func.lower(func.col("Product")))
-
-# res7 = res7.drop(res7.Count_max)
-
-# #res7.show()
-
-# res8 = res7.join(res4,['year','Product'],'inner').sort('Product','year')
-
-# res8.show()
