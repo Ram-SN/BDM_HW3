@@ -40,5 +40,3 @@ res4 = res4.select('Product', 'year', 'Total_Complaints', 'Total_Companies', 'Pe
 
 res4.write.csv(output_file)
 
-res4.show()
-
