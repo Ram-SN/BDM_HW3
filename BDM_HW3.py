@@ -34,7 +34,9 @@ res4 = res3.withColumn('Percentage', func.round(func.col('maximum') / func.col('
 
 res4 = res4.drop(res4.maximum).sort('year', 'Product')
 
-res4 = res4.select(func.lower('Product'), 'year', 'Total_Complaints', 'Total_Companies', 'Percentage')
+res4 = res4.withColumn("Product",func.lower(func.col("Product")))
+
+res4 = res4.select('Product', 'year', 'Total_Complaints', 'Total_Companies', 'Percentage')
 
 res4.write.csv(output_file)
 
