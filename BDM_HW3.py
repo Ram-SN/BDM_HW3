@@ -36,5 +36,7 @@ res4 = res4.drop(res4.maximum).sort('year', 'Product')
 
 res4 = res4.select(func.lower('Product'), 'year', 'Total_Complaints', 'Total_Companies', 'Percentage')
 
+res4.write.csv(output_file)
+
 res4.show()
 
